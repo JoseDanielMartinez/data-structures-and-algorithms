@@ -89,21 +89,30 @@ Write a function named addValues that takes in an array and a value and pushes t
 
 Then, write a function named addNumbers that takes in four arguments:
   - A number to be added to an array
-  - An array into which the number should be added
-  - The number of times the number should be added
-  - A callback function to use to add the numbers to the array (Hint: you already defined it)
+  - An array into which the number should be added ->> arr
+  - The number of times the number should be added ->> times
+  - A callback function to use to add the numbers to the array (Hint: you already defined it) ->> callback
 
 Within the addNumbers function, invoke the callback function as many times as necessary, based on the third argument of the addNumbers function.
 
 Return the modified array.
+
+! expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
   // Solution code here...
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
+
+  for (let i=0; i < times; i++){
+    callback(arr,num);
+  }
+
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -126,6 +135,15 @@ This function should use forEach to populate your grocery list based on the stor
 
 const createList = (availableItems) => {
   // Solution code here...
+  let listArr = [];
+
+  availableItems.forEach((item)=>{
+    if(item.available){
+      listArr.push(item.name);
+    }
+  });
+
+  return listArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
